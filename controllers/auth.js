@@ -15,7 +15,7 @@ function register(req, res, next) {
 	const { email, username, password, repeatPassword } = req.body;
 
 	return userModel
-		.create({ email, username, password })
+		.create({ email, username, password, isAdmin: false })
 		.then((createdUser) => {
 			createdUser = bsonToJson(createdUser);
 			createdUser = removePassword(createdUser);
